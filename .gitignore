@@ -1,0 +1,44 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.egg-info/
+dist/
+build/
+venv/
+.env
+*.egg
+
+# Pytest
+.pytest_cache/
+htmlcov/
+.coverage
+
+# Docker
+*.log
+
+# Terraform
+terraform/.terraform/
+terraform/*.tfstate
+terraform/*.tfstate.backup
+terraform/.terraform.lock.hcl
+terraform/tfplan
+terraform/*.tfplan
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Node (por si se usa alguna herramienta JS)
+node_modules/
+
+# Evidencias grandes (opcional, subir solo las necesarias)
+# docs/*.mp4

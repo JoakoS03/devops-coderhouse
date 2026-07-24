@@ -1,0 +1,56 @@
+Ejercicio
+
+Actividad
+
+Sigue estos pasos para construir tu pipeline completo y entregar el repositorio final:
+
+Configura el repositorio: Crea un repositorio público o privado según indicaciones.
+
+Docker: Crea Dockerfiles optimizados con multi-stage builds para tu aplicación.
+
+Terraform: Define la infraestructura necesaria (redes, instancias, cluster Kubernetes) usando Terraform. Incluye variables y módulos para flexibilidad.
+
+Pipeline CI/CD: Implementa workflows en GitHub Actions o GitLab CI que automaticen:
+
+Build y test de la aplicación.
+Construcción y push de imágenes Docker a un registry.
+Provisionamiento de infraestructura con Terraform.
+Despliegue en Kubernetes usando manifiestos (Pods, Services, Ingress).
+Ejecución de análisis SAST y DAST.
+Kubernetes: Crea manifiestos para:
+
+Desplegar la aplicación en Pods.
+Exponerla con Services e Ingress.
+Configurar auto-escalado con HPA.
+Monitoreo: Integra Prometheus y Grafana para recolectar métricas y visualizar dashboards básicos.
+
+FinOps: Aplica configuraciones para optimizar costos, como escalado automático y apagado de recursos no usados.
+
+Documentación: Escribe un README claro que incluya:
+
+Descripción del proyecto.
+Pasos para ejecutar localmente y en entorno de pruebas.
+Cómo validar despliegues y monitoreo.
+Evidencias (logs, screenshots, links) que demuestren el funcionamiento.
+Entrega: Entrega un informe detallado con los pasos realizados y subelo a un link de Google Drive
+
+Consejos:
+
+Usa variables y secretos para credenciales.
+Aplica buenas prácticas de seguridad y evita exponer información sensible.
+Realiza commits frecuentes y descriptivos.
+¡Manos a la obra! Este proyecto es la culminación de tu aprendizaje y la mejor forma de demostrar tu dominio en infraestructura cloud y automatización.
+
+Entregable
+
+Entrega un reporte completo que contenga cómo realizaron el pipeline:
+
+Dockerfiles optimizados para la aplicación.
+Código Terraform para provisioning de infraestructura.
+Definiciones de pipeline CI/CD (GitHub Actions o GitLab CI) que automaticen build, test, despliegue y análisis de seguridad.
+Manifiestos Kubernetes para despliegue, servicios, ingress y auto-escalado.
+Configuración básica de monitoreo con Prometheus y Grafana.
+README detallado con instrucciones para ejecutar localmente y en entorno de pruebas, además de evidencias (logs, screenshots) que demuestren despliegue y métricas.
+El informe debe estar organizado, con commits claros y documentación suficiente para que otro desarrollador pueda replicar y validar el pipeline sin asistencia.
+
+Formato de entrega: documento PDF o URL a Google Docs bajo el nombre PF+APELLIDO.pdf
