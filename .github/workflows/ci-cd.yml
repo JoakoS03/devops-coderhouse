@@ -34,7 +34,7 @@ jobs:
           
       - name: Run tests with pytest
         run: |
-          pytest -v app/test_main.py
+          cd app && pytest -v test_main.py
 
   sast:
     name: Security - Static Analysis (SAST)
@@ -101,7 +101,7 @@ jobs:
         with:
           images: ${{ steps.image_name.outputs.IMAGE }}
           tags: |
-            type=sha
+            type=raw,value=${{ github.sha }}
             type=raw,value=latest,enable={{is_default_branch}}
 
       - name: Build and push Docker image
@@ -118,7 +118,7 @@ jobs:
       - name: Run Trivy image scan
         uses: aquasecurity/trivy-action@master
         with:
-          image-ref: '${{ steps.image_name.outputs.IMAGE }}:latest'
+          image-ref: '${{ steps.image_name.outputs.IMAGE }}:${{ github.sha }}'
           format: 'table'
           exit-code: '0'
           ignore-unfixed: true
