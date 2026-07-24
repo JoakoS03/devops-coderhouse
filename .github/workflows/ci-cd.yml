@@ -91,11 +91,15 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Set image name to lowercase
+        id: image_name
+        run: echo "IMAGE=${{ env.REGISTRY }}/${{ github.repository }}/${{ env.IMAGE_NAME }}" | tr '[:upper:]' '[:lower:]' >> $GITHUB_OUTPUT
+
       - name: Extract metadata for Docker
         id: meta
         uses: docker/metadata-action@v5
         with:
-          images: ${{ env.REGISTRY }}/${{ github.repository }}/${{ env.IMAGE_NAME }}
+          images: ${{ steps.image_name.outputs.IMAGE }}
           tags: |
             type=sha
             type=raw,value=latest,enable={{is_default_branch}}
@@ -114,7 +118,7 @@ jobs:
       - name: Run Trivy image scan
         uses: aquasecurity/trivy-action@master
         with:
-          image-ref: '${{ env.REGISTRY }}/${{ github.repository }}/${{ env.IMAGE_NAME }}:latest'
+          image-ref: '${{ steps.image_name.outputs.IMAGE }}:latest'
           format: 'table'
           exit-code: '0'
           ignore-unfixed: true
