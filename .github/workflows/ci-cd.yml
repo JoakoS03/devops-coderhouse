@@ -159,6 +159,12 @@ jobs:
         with:
           cluster_name: todo-api-test
 
+      - name: Build Docker image for testing
+        run: docker build -t todo-api:v2 ./app
+        
+      - name: Load image into KinD
+        run: kind load docker-image todo-api:v2 --name todo-api-test
+
       - name: Apply Kubernetes Manifests
         run: |
           kubectl apply -f k8s/
@@ -184,6 +190,12 @@ jobs:
         uses: helm/kind-action@v1
         with:
           cluster_name: todo-api-dast
+
+      - name: Build Docker image for DAST
+        run: docker build -t todo-api:v2 ./app
+        
+      - name: Load image into KinD
+        run: kind load docker-image todo-api:v2 --name todo-api-dast
 
       - name: Deploy app for DAST
         run: |
