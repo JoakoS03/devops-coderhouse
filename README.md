@@ -68,8 +68,8 @@ Asegúrate de tener instaladas las siguientes herramientas en tu entorno local:
 
 ### 1. Clonar el repositorio
 ```bash
-git clone https://github.com/tu-usuario/tu-repo.git
-cd tu-repo
+git clone [https://github.com/JoakoS03/devops-coderhouse.git](https://github.com/JoakoS03/devops-coderhouse.git)
+cd devops-coderhouse
 ```
 
 ### 2. Ejecutar localmente (Python)
