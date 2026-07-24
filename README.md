@@ -279,6 +279,6 @@ sequenceDiagram
 
 **Joaquín**  
 - Curso de DevOps
-- GitHub: [tu-usuario](https://github.com/tu-usuario)
+- GitHub: [joakos03](https://github.com/joakos03)
 
 *¡Gracias por revisar este proyecto!*
