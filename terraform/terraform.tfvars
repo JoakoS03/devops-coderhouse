@@ -1,7 +1,7 @@
-# Valores por defecto para el desarrollo local (Minikube / Kind)
+# Valores por defecto para el desarrollo local (Docker Desktop)
 
 app_name          = "todo-api"
-app_namespace     = "todo-app-local"
+app_namespace     = "todo-app"
 app_image         = "todo-api:latest"
 app_port          = 8000
 

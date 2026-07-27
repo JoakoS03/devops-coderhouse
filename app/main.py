@@ -44,7 +44,7 @@ def get_tasks():
 def create_task(task: TaskCreate):
     global task_id_counter
     # Use dict() for pydantic v1 compatibility or model_dump() for v2
-    task_data = task.dict() if hasattr(task, "dict") else task.model_dump()
+    task_data = task.model_dump()
     new_task = Task(id=task_id_counter, **task_data)
     tasks.append(new_task)
     task_id_counter += 1

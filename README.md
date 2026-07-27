@@ -178,13 +178,12 @@ bandit -r app/
 
 | Método | Endpoint | Descripción |
 |--------|----------|-------------|
-| GET | `/` | Retorna mensaje de bienvenida y healthcheck. |
-| GET | `/todos` | Lista todas las tareas pendientes. |
-| POST | `/todos` | Crea una nueva tarea. |
-| GET | `/todos/{id}` | Obtiene el detalle de una tarea específica. |
-| PUT | `/todos/{id}` | Actualiza una tarea existente. |
-| DELETE | `/todos/{id}` | Elimina una tarea. |
-| GET | `/metrics` | Endpoint expuesto para ser consumido por Prometheus. |
+| GET | `/` | Retorna mensaje de bienvenida e info de la app. |
+| GET | `/health` | Health check para liveness/readiness probes de K8s. |
+| GET | `/tasks` | Lista todas las tareas pendientes. |
+| POST | `/tasks` | Crea una nueva tarea (`title`, `description`). |
+| DELETE | `/tasks/{task_id}` | Elimina una tarea por su ID. |
+| GET | `/metrics` | Endpoint de métricas para Prometheus. |
 
 ---
 
@@ -245,21 +244,33 @@ sequenceDiagram
 .
 ├── .github/
 │   └── workflows/
-│       └── ci-cd.yml      # Definición de GitHub Actions
+│       └── ci-cd.yml          # Pipeline CI/CD (GitHub Actions)
 ├── app/
-│   ├── main.py            # Código fuente de FastAPI
-│   ├── test_main.py       # Pruebas automatizadas (Pytest)
-│   ├── requirements.txt   # Dependencias de Python
-│   └── Dockerfile         # Receta para construir la imagen de la API
+│   ├── main.py                # Código fuente de FastAPI
+│   ├── test_main.py           # Pruebas automatizadas (Pytest)
+│   ├── requirements.txt       # Dependencias de Python
+│   ├── Dockerfile             # Multi-stage build de la imagen
+│   └── .dockerignore          # Exclusiones para Docker
 ├── k8s/
-│   ├── deployment.yaml    # Definición de Deployments y HPA
-│   ├── service.yaml       # Definición de Service (ClusterIP/NodePort)
-│   └── ingress.yaml       # Definición de Ingress (Opcional)
+│   ├── 00-namespace.yaml      # Namespace todo-app
+│   ├── deployment.yaml        # Deployment con probes y limits
+│   ├── service.yaml           # Service (ClusterIP/NodePort)
+│   ├── ingress.yaml           # Ingress (nginx)
+│   └── hpa.yaml               # HorizontalPodAutoscaler (FinOps)
+├── monitoring/
+│   ├── prometheus-config.yaml # Prometheus: ConfigMap + RBAC + Deploy
+│   ├── grafana-deployment.yaml# Grafana: Deploy + Service
+│   └── grafana-dashboard.json # Dashboard pre-configurado
 ├── terraform/
-│   ├── main.tf            # Definición principal de infraestructura
-│   ├── variables.tf       # Variables de entrada
-│   └── outputs.tf         # Variables de salida
-└── README.md              # Este archivo
+│   ├── main.tf                # Recursos de infraestructura
+│   ├── variables.tf           # Variables de entrada
+│   ├── outputs.tf             # Variables de salida
+│   ├── providers.tf           # Proveedores K8s y Helm
+│   └── terraform.tfvars       # Valores para entorno local
+├── docs/
+│   └── INFORME.md             # Informe del entregable
+├── .gitignore
+└── README.md                  # Este archivo
 ```
 
 ---

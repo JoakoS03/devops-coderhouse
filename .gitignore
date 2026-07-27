@@ -42,3 +42,6 @@ node_modules/
 
 # Evidencias grandes (opcional, subir solo las necesarias)
 # docs/*.mp4
+
+# Archivos de salida local
+app/res.txt
